@@ -1,0 +1,86 @@
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\ProvidesPackage{latexalpha}[2014/03/28 LaTeX-Alpha]
+\RequirePackage{graphicx}
+\RequirePackage{amsmath}
+\RequirePackage{hyperref}
+\RequirePackage{ifthen}
+
+
+
+%To do - Add option for wget instead of curl 
+%To do - Add general 3d graphic options
+%To do - file upload and import on cloud side, CSV compatability, .m compatability. (POST file. Import on cloud side?)
+%To do - initalize could kernel with local .m file to use personally defined functions. More gernally, allow more control over cloud object (DeclareOption initialize=----.m and run it within each command? This might be slow.)
+%To do - Set up option to pass Wolfram login info to package and have it run on user's cloud
+%To do -  Handle uncertainties elegantly  (error package completely integrated into LaTeX-Alpha?)
+%To do - do data fitting. Non linear,
+%To do - some sort of ShowSteps command for assignments. (can I get the show steps info from WolframAlpha?) (Trace?)
+%To do - Save previous calculations/graphics so on compile you don't need to curl for a result/graphic that has not changed.
+%To do - maybe return solutions to equations as a matrix without brackets so it can be added within math environments. (Will the formatting look bad?)
+% To do - !!! Have Wolfram Side errors (bad syntax) be available to users !!! (use trace to find message list?)
+% To do - Solve differential equations
+% To do - Use subscripts
+% To do - texcalc command which takes latex input for simpler calculations (how to deal complex lowercase i's...) -  for double backlashes, go to character code, parse for all LaTeX math commands, replace
+
+\newcommand{\latexalpha}{\href{https://github.com/Akollek/LaTeX-Alpha}{ \textbf{\LaTeX-$\alpha$} }}
+
+\newcommand{\threeDQuadratic}[1]{
+	\href{https://www.wolframcloud.com/app/view/file/52b542b01db84baa8705f6338c449ed2}{#1}
+}
+
+\newcommand{\threeDSphere}[1]{
+	\href{https://www.wolframcloud.com/app/view/file/1ab7507480c34bb09c5e73f0b70b2d27}{#1}
+}
+
+\newcommand{\threeDSinusoid}[1]{
+	\href{https://www.wolframcloud.com/app/view/file/6314a9dcf1164fd88f49286cae3a8d7c}{#1}
+}
+
+
+
+\newcommand{\graphic}[2]{
+	\immediate\write18{curl "https://www.wolframcloud.com/objects/c6d1dc68-1812-4a20-84da-9c45f68b054b"  --data-urlencode "x=#1" > '#2'.png}
+}
+
+
+\newcommand{\calc}[1]{
+	\immediate\write18{rm -f calc.latexalpha}
+	\immediate\write18{curl "https://www.wolframcloud.com/objects/a6574816-f940-4975-9c7f-7a1f99099ed4" --data-urlencode "x=#1" > calc.latexalpha}
+	\input{calc.latexalpha}
+	\immediate\write18{rm -f calc.latexalpha}
+}
+
+\newcommand{\solve}[2]{
+	\immediate\write18{rm -f solve.latexalpha}
+	\immediate\write18{curl "https://www.wolframcloud.com/objects/a789a339-5784-4823-9dea-cd34d470a08e" --data-urlencode "eq=#1" --data-urlencode "var=#2" > solve.latexalpha}
+	\input{solve.latexalpha}
+	\immediate\write18{rm -f solve.latexalpha}
+}
+
+\newcommand{\WolframAlpha}[1]{
+	\immediate\write18{rm -f wolfalph.latexalpha}
+	\immediate\write18{curl "https://www.wolframcloud.com/objects/2d3d3245-0c73-40d2-b91b-29a12142681d" --data-urlencode "x=#1" > wolfalph.latexalpha}
+	\input{wolfalph.latexalpha}
+	\immediate\write18{rm -f wolfalph.latexalpha}
+}
+
+\newcommand{\WolframAlphaMath}[1]{
+	\immediate\write18{rm -f wolfalphm.latexalpha}
+	\immediate\write18{curl "https://www.wolframcloud.com/objects/f1bdbc66-04cb-4805-b1a4-19f6ba3ddad6" --data-urlencode "x=#1" > wolfalphm.latexalpha}
+	\input{wolfalphm.latexalpha}
+	\immediate\write18{rm -f wolfalphm.latexalpha}
+}
+
+\newcommand{\dataplotTXT}[4]{
+	\ifthenelse{\equal{#4}{}}{
+	\immediate\write18{List=`cat '#1'` && curl "https://www.wolframcloud.com/objects/5f9af475-d92f-4a89-8273-a661eece50ca" --data-urlencode "x=#2" --data-urlencode "list=$List" > '#3'.png}}{
+	\immediate\write18{List=`cat '#1'` && curl "https://www.wolframcloud.com/objects/af778756-3e2e-4a27-af3f-24113ef0cd1e" --data-urlencode "plot=#2" --data-urlencode "list=$List" --data-urlencode "rules=#4" > '#3'.png}
+	}	
+}
+
+
+
+\endinput
+
+
+
