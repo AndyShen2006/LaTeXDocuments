@@ -13,6 +13,5 @@
             "server": "localhost",
             "username": "AndyShen"
         }
-    ],
-    "latex-workshop.latex.autoBuild.run": "onSave"
+    ]
 }
