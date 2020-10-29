@@ -1,0 +1,73 @@
+\documentclass[final,11pt,oneside,UTF8]{report}
+\usepackage{ctex}
+\usepackage{float}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{amsmath,amsfonts,amssymb}
+\title{Statements}
+\author{AndyShen2006}
+\date{Oct.28th.2020}
+\begin{document}
+\maketitle
+由于写的有点匆忙，所以没画图，图就自己看吧。
+\subsubsection{T1(圣彼得堡1994年八年级题)}
+\paragraph{
+    这题十分简单，简单过一下，大概看一下过程。D点是AB中点
+}
+\paragraph{
+    $$\because \angle DAO=\angle OAE,BE\perp AC,OD\perp AB,DO=OE$$
+    $$\therefore \triangle AOD\cong \triangle AOE(AAS)$$
+    $$\therefore AD=DB=AE$$
+    $$\therefore AB=2AE$$
+    $$\therefore \angle ABE=30^\circ ,\angle A=60^\circ$$
+}
+\subsubsection{T2(1990年北京市竞赛题)}
+\paragraph{
+    这题稍有些难度，但是不算很难。这道题目中要证明BD平分，最好的办法是根据
+    等腰三角形三线合一，构造等腰三角形去做，所以延长AE，BC至点F。
+}
+\paragraph{
+    $$\angle FAC=90^\circ -\angle AFB=\angle CBD$$
+    $$\because AC=BC,\angle ACF=\angle DCB=90^\circ$$
+    $$\therefore \triangle AFC\cong \triangle BDC(ASA)$$
+    $$\because AE=\frac{1}{2}BD=\frac{1}{2}AF$$
+    $$\therefore AE=EF$$
+    \begin{center}
+        又$BE\perp AF,EB=EB$
+    \end{center}
+    $$\therefore AB=AF$$
+    \begin{center}
+        BD平分$\angle FBA$
+    \end{center}
+}
+\subsubsection{T3(1998年全国初中数学竞赛试题)}
+\paragraph{
+    出了这题是我的失误Orz，因为这题显著的要用中位线。该中位线便是ED
+}
+\paragraph{
+    我们预习一下中位线的定义和性质，中位线是三角形两条边的中点的连线(定义)
+    ，中位线的长度是底边的一半，中位线与底边平行(性质)\\
+    证明方法是延长中位线至二倍，连接底边的点和中位线的点，SAS证明与原三角形全等。
+    接着用两条对边相等且平行(还是SAS证明)证明二倍中位线和底边相等且平行，即证
+}
+\paragraph{
+    这题连接ED，这是一条中位线，由于两条中线垂直，则这个四边形面积是两中线乘积除以二
+    $(S_DEBC =4*6/2=12)$(设一条是底边，分成两个三角形，然后分别乘以它们的高，分配律一下就得到了)
+    因为ED是中位线$，$所以$S_\triangle AED=S_\triangle BED=S,S_\triangle DBC=2S_\triangle DEB=2S$
+    从而可以得到$S_\triangle ABC=4S=\frac{4}{3}*S_DEBC=16$
+}
+\subsubsection{T4(第20届全俄奥林匹克题)}
+\paragraph{
+    又是一道简单题QAQ，这题目就比作业本的题目难一点。
+}
+\paragraph{
+    $$\because OA=OC,\angle C_1 OA=\angle A_1 OC,\angle AC_1 O=\angle OA_1 C=90^\circ$$
+    $$\therefore \triangle AOC_1 \cong \triangle COA_1 ,\angle OAC=\angle OCA$$
+    $$\therefore \angle OAC_1 =\angle OCA_1$$
+    $$\therefore \angle CAC_1 = \angle ACA_1$$
+    $$\therefore AB=BC$$
+    \begin{center}
+        即$\triangle ABC$是等腰三角形
+    \end{center}
+}
+\end{document}
