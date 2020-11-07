@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020/W32TeX) (preloaded format=xelatex 2020.8.10)  17 OCT 2020 22:55
+This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020/W32TeX) (preloaded format=xelatex 2020.8.10)  7 NOV 2020 17:07
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -291,8 +291,7 @@ File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
 )) (e:/texlive/2020/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 Package: etoolbox 2019/09/21 v2.5h e-TeX tools for LaTeX (JAW)
 \etb@tempcnta=\count285
-))
-No file test1.aux.
+)) (./test1.aux)
 \openout1 = `test1.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 4.
@@ -311,7 +310,7 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 4.
 LaTeX Font Info:    ... okay on input line 4.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 4.
 LaTeX Font Info:    ... okay on input line 4.
-ABD: EverySelectfont initializing macros
+ ABD: EverySelectfont initializing macros
 LaTeX Info: Redefining \selectfont on input line 4.
 
 Package fontspec Info: Adjusting the maths setup (use [no-math] to avoid
@@ -372,16 +371,7 @@ LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 
 
 LaTeX Font Warning: Font shape `OMX/cmex/m/n' in size <10.53937> not available
-(Font)              size <10.95> substituted on input line 12.
-
-e:/shen/Documents/LaTeX/test1.tex:12: Undefined control sequence.
-l.12 $-\frac{\hbar^2}{2\mu } \triangledown
-                                           ^2\psi +U\psi=E\psi$
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
+(Font)              size <10.95> substituted on input line 13.
 
 [1
 
@@ -392,9 +382,9 @@ LaTeX Font Warning: Size substitutions with differences
 
  ) 
 Here is how much of TeX's memory you used:
- 8051 strings out of 479418
- 218581 string characters out of 5888105
- 493843 words of memory out of 5000000
+ 8053 strings out of 479418
+ 218601 string characters out of 5888105
+ 492843 words of memory out of 5000000
  25494 multiletter control sequences out of 15000+600000
  534158 words of font info for 46 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
