@@ -1,0 +1,178 @@
+\documentclass[final,11pt,oneside,UTF8]{report}
+\usepackage{ctex}
+\usepackage{float}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{listings}
+\usepackage{multicol}
+\usepackage{multirow}
+\begin{document}
+\centerline{\LARGE{提高组模拟试题}}
+\centerline{}
+\centerline{\LARGE{比赛时间：2022年10月31日}}
+\centerline{}
+\centerline{出题人:}
+\centerline{杭州第四中学\ 沈奕天(T1,T3,T4)}
+\centerline{杭州高级中学\ 黄鹏程(T2)}
+\centerline{}
+\begin{table}[h]
+    \centering
+    \begin{tabular}{lllll}
+        \hline
+        \multicolumn{1}{|l|}{题目名称}    & \multicolumn{1}{l|}{桃花源的道路}   & \multicolumn{1}{l|}{扣篮大赛}          & \multicolumn{1}{l|}{花园}         & \multicolumn{1}{l|}{条件}            \\ \hline
+        \multicolumn{1}{|l|}{题目类型}    & \multicolumn{1}{l|}{传统型}      & \multicolumn{1}{l|}{传统型}           & \multicolumn{1}{l|}{传统型}        & \multicolumn{1}{l|}{传统型}           \\ \hline
+        \multicolumn{1}{|l|}{目录}      & \multicolumn{1}{l|}{road}     & \multicolumn{1}{l|}{basket}        & \multicolumn{1}{l|}{beauty}     & \multicolumn{1}{l|}{condition}     \\ \hline
+        \multicolumn{1}{|l|}{可执行文件名}  & \multicolumn{1}{l|}{road}     & \multicolumn{1}{l|}{basket}        & \multicolumn{1}{l|}{beauty}     & \multicolumn{1}{l|}{condition}     \\ \hline
+        \multicolumn{1}{|l|}{输入文件名}   & \multicolumn{1}{l|}{road.in}  & \multicolumn{1}{l|}{basket.in}     & \multicolumn{1}{l|}{beauty.in}  & \multicolumn{1}{l|}{condition.in}  \\ \hline
+        \multicolumn{1}{|l|}{输出文件名}   & \multicolumn{1}{l|}{road.out} & \multicolumn{1}{l|}{basket.out}    & \multicolumn{1}{l|}{beauty.out} & \multicolumn{1}{l|}{condition.out} \\ \hline
+        \multicolumn{1}{|l|}{每个测试点时限} & \multicolumn{1}{l|}{1.0秒}     & \multicolumn{1}{l|}{1.0秒}          & \multicolumn{1}{l|}{1.0秒}       & \multicolumn{1}{l|}{1.0秒}          \\ \hline
+        \multicolumn{1}{|l|}{内存限制}    & \multicolumn{1}{l|}{512MiB}   & \multicolumn{1}{l|}{512MiB}        & \multicolumn{1}{l|}{512MiB}     & \multicolumn{1}{l|}{512MiB}        \\ \hline
+        \multicolumn{1}{|l|}{子任务数目}   & \multicolumn{1}{l|}{20}       & \multicolumn{1}{l|}{10}            & \multicolumn{1}{l|}{20}         & \multicolumn{1}{l|}{20}            \\ \hline
+        \multicolumn{1}{|l|}{测试点是否等分} & \multicolumn{1}{l|}{是}        & \multicolumn{1}{l|}{是}             & \multicolumn{1}{l|}{是}          & \multicolumn{1}{l|}{是}             \\ \hline
+        提交源程序文件名                      &                               &                                    &                                 &                                    \\ \hline
+        \multicolumn{1}{|l|}{对于C++语言} & \multicolumn{1}{l|}{road.cpp} & \multicolumn{1}{l|}{basket.cpp}    & \multicolumn{1}{l|}{beauty.cpp} & \multicolumn{1}{l|}{condition.cpp} \\ \hline
+        编译选项                          &                               &                                    &                                 &                                    \\ \hline
+        \multicolumn{1}{|l|}{对于C++语言} & \multicolumn{1}{l}{}          & \multicolumn{1}{l}{-O2 -std=c++14} & \multicolumn{1}{l}{}            & \multicolumn{1}{l|}{}              \\ \hline
+    \end{tabular}
+\end{table}
+\newpage
+
+\centerline{\LARGE{$\textbf{桃花源的道路}\text{(road)}$}}
+\subsubsection{题目背景}
+\paragraph{
+    “林尽水源，便得一山，山有小口，仿佛若有光。便舍船，从口入。初极狭，才通人。复行数十步，豁然开朗。土地平旷，屋舍俨然，有良田、美池、桑竹之属。阡陌交通，鸡犬相闻。其中往来种作，男女衣着，悉如外人。黄发垂髫，并怡然自乐。”——陶渊明《桃花源记》
+}
+\paragraph{
+    桃花源有很多阡陌（也就是田间小路），在桃花源中的居民有一天突然发现：有的阡陌不怎么好走了。原来，原来$2m$宽的路，在海陆变迁中毁坏了，有的变成了$1m$，有的变成了$3m$。现在，他们想要重新修一下这个路，使桃花源的交通重新通畅。
+}
+\subsubsection{题目描述}
+\paragraph{
+    现在，桃花源的居民给了你小路中其中一段的剖面图，用O表示$1m$路，用X表示$1m$障碍。他们可以将一个X移到一个O的地方上。你要编写一个程序，输出最少需要移动多少次，能够使得小路全部变到$2m$的状态。
+}
+\paragraph{桃花源的居民希望能够尽快通路，所以你的程序要尽可能快的解决这个问题。}
+\subsubsection{输入格式}
+\paragraph{一行一个字符串，用O和X描述了现在的道路情况。}
+\subsubsection{输出格式}
+\paragraph{一行一个整数$n$，表示最少需要移动的次数。}
+\subsubsection{样例组}
+\begin{table}[H]
+    \begin{tabular}{|l|l|}
+        \hline
+        Input \#1: & Output \#1: \\ \hline
+        XOXOOOXOOX & 1           \\ \hline
+    \end{tabular}
+\end{table}
+\subsubsection{提示与说明}
+\paragraph{样例解释：将第三位的X移到第四位即可。}
+\paragraph{串的长度一定是$3n+1$，且$X$的个数是$n$个}
+\paragraph{对于$100\%$的数据，保证字符串长度不超过$3 \times 10^6$}
+\newpage
+\centerline{\LARGE{$\textbf{扣篮大赛}\text{(basket)}$}}
+\subsubsection{题目背景}
+\paragraph{
+    hpc 正在为今年的扣篮大赛作准备。
+}
+\subsubsection{题目描述}
+\paragraph{
+    hpc 腿伤刚康复，弹跳的能力有一定上限。扣篮大赛共有 $n$ 个篮筐，编号为 $1,2\cdots n$，高度分别为 $h_1,h_2\cdots h_n$，hpc 需要达到某个篮筐的高度才能在这个篮筐上扣篮。由于篮筐之间存在差异，扣篮的消耗也不尽相同，分别为 $s_1,s_2\cdots s_n$。hpc 要一次起跳并同时扣多个篮筐。他从起跳到落地的消耗为在空中经过的距离与扣篮消耗的总和。为了知道在自己的能力限度内最多能扣多少个篮筐，你需要求出他一次起跳扣 $1,2\cdots n$ 个篮筐的最少消耗。
+}
+\subsubsection{输入格式}
+\paragraph{
+    第一行一个整数 $n$。
+}
+\paragraph{
+    第二行 $n$ 个整数，第 $i$ 个整数表示 $h_i$。
+}
+\paragraph{
+    第三行 $n$ 个整数，第 $i$ 个整数表示 $s_i$。
+}
+\subsubsection{输出格式}
+\paragraph{
+    输出共 $n$ 行，每行一个整数。第 $i$ 行的整数表示扣 $i$ 个篮筐的最少消耗。
+}
+\subsubsection{样例组}
+\begin{table}[H]
+    \begin{tabular}{|l|l|}
+        \hline
+        Input \#1:                                                        & Output \#1:                                                   \\ \hline
+        \begin{tabular}[c]{@{}l@{}}5\\ 1 2 3 4 5\\ 1 2 3 4 5\end{tabular} & \begin{tabular}[c]{@{}l@{}}3\\ 7\\ 12\\ 18\\ 25\end{tabular}  \\ \hline
+        Input \#2:                                                        & Output \#2:                                                   \\ \hline
+        \begin{tabular}[c]{@{}l@{}}5\\ 1 2 2 4 5\\ 5 4 3 4 1\end{tabular} & \begin{tabular}[c]{@{}l@{}}7\\ 11\\ 16\\ 22\\ 27\end{tabular} \\ \hline
+    \end{tabular}
+\end{table}
+\subsubsection{提示与说明}
+\paragraph{
+    对于 $20\%$ 的数据，$n\le 10$。
+}
+\paragraph{
+    对于 $60\%$ 的数据，$n\le 300$。
+}
+\paragraph{
+    对于 $80\%$ 的数据，$n\le 4000$。
+}
+\paragraph{
+    对于 $100\%$ 的数据，$2\le n\le 5000$，$1\le h_i,s_i\le 5\times 10^8$。
+}
+\newpage
+\centerline{\LARGE{$\textbf{花园}\text{(beauty)}$}}
+\subsubsection{题目背景}
+\paragraph{
+    Farmer John的农场里有一个花园，FJ正在为花园里种什么花而发愁……
+}
+\subsubsection{题目描述}
+\paragraph{
+    市场上有$m$种花，每朵花有$n$个“美观点”。其中，如果某一朵花和某一朵花有偶数个共同美观点，那么FJ就会认为美观的重复度过高而降低1的美观度，如果有奇数个共同美观点，就会增加1的美观度。（初始的美观度是0）
+}
+\paragraph{
+    现在告诉你这些花的美观点，问最后总的美观度是多少。
+}
+\subsubsection{输入格式}
+\paragraph{第一行三个整数$m,n$}
+\paragraph{接下来$m$行，每行$n$个整数，代表了这个花具有的美观点数量。}
+\subsubsection{输出格式}
+\paragraph{
+    一行一个整数，输出最后的美观度
+}
+\subsubsection{样例组}
+\begin{table}[H]
+    \begin{tabular}{|l|l|}
+        \hline
+        Input \#1:                                                                  & Output \#1: \\ \hline
+        \begin{tabular}[c]{@{}l@{}}4 3\\ 1 2 4\\ 2 3 1\\ 4 3 2\\ 2 5 3\end{tabular} & -2          \\ \hline
+    \end{tabular}
+\end{table}
+\subsubsection{提示}
+\paragraph{
+    对于$75\%$的数据，保证$2\le n\le 1\times 500$，$1\le m\le 10$
+}
+\paragraph{
+    对于$100\%$的数据，保证$2\le n\le 1\times 10^4$，$1\le m\le 10$
+}
+\newpage
+\centerline{\LARGE{$\textbf{条件}\text{(condition)}$}}
+\subsubsection{题目描述}
+\paragraph{在高中数学必修一中，有一课叫充分必要条件。其中，对于条件$p$和条件$q$，如果存在$p\rightarrow q$，就称$p$为$q$的充分条件，$q$为$p$的必要条件。如果存在$p \leftrightarrow q$，则称$p$为$q$的充分必要条件，$q$为$p$的充分必要条件（如果$p \leftrightarrow q$，则$p \rightarrow q$，$q \rightarrow p$）。显然的，这些条件之间存在着传递性，如果$a \rightarrow b$,$b \rightarrow c$，那么一定存在$a \rightarrow c$。另外，每个条件都是自己的充分必要条件。现在，给出若干条件和若干询问，问任意两个条件之间的关系。}
+\subsubsection{输入格式}
+\paragraph{第一行三个整数$n,m,q$，分别代表了条件数，关系数，询问数}
+\paragraph{接下来$m$行，每行一个表达式，其中，表达式是这么定义的：整数 符号 整数}
+\paragraph{例如：}
+\paragraph{1 -> 2，说明1是2的充分条件(注意，箭头两边有空格，下同)}
+\paragraph{2 <- 1，说明2是1的必要条件}
+\paragraph{2 <-> 3，说明2是3的充分必要条件}
+\paragraph{再接下来$q$行，每行两个整数，询问这两个整数之间的关系。}
+\subsubsection{输出格式}
+\paragraph{输出这些关系，表达形式与输入形式相同。（如果不存在任何关系，输出一行Fail）}
+\subsubsection{样例组}
+\begin{table}[H]
+    \begin{tabular}{|l|l|}
+        \hline
+        Input \#1:                                                                                                                                & Output \#1:                                                                              \\ \hline
+        \begin{tabular}[c]{@{}l@{}}4 4 2\\ 1 -\textgreater 2\\ 2 -\textgreater 3\\ 3 -\textgreater 1\\ 4 -\textgreater 2\\ 1 3\\ 4 3\end{tabular} & \begin{tabular}[c]{@{}l@{}}1 \textless{}-\textgreater 3\\ 4 -\textgreater 3\end{tabular} \\ \hline
+    \end{tabular}
+\end{table}
+\subsubsection{提示与说明}
+\paragraph{对于数据点1-15，保证$50\le n \le 500,100\le m \le 1000,1\le q \le 100$}
+\paragraph{对于数据点16-20，保证$5000\le n \le 50000,10000\le m \le 100000,1\le q \le 500$，且对于每个点，都有至少100个点与它成充分必要关系。}
+\newpage
+\end{document}

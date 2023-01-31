@@ -1,0 +1,225 @@
+\documentclass[final,11pt,oneside,UTF8]{report}
+\usepackage{ctex}
+\usepackage{float}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{mhchem}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{listings}
+\usepackage{multicol}
+\usepackage{multirow}
+\begin{document}
+\centerline{\LARGE{普及组模拟试题}}
+\centerline{}
+\centerline{\LARGE{Jun.25th.2022}}
+\centerline{}
+\centerline{出题人:AndyShen2006}
+\centerline{验题人:Quidrem}
+\centerline{}
+\begin{table}[h]
+    \centering
+    \begin{tabular}{lllll}
+        \hline
+        \multicolumn{1}{|l|}{题目名称}       & \multicolumn{1}{l|}{因子个数}      & \multicolumn{1}{l|}{志愿录取}       & \multicolumn{1}{l|}{食物链}       & \multicolumn{1}{l|}{Love and Puzzle} \\ \hline
+        \multicolumn{1}{|l|}{题目类型}       & \multicolumn{1}{l|}{传统型}       & \multicolumn{1}{l|}{传统型}        & \multicolumn{1}{l|}{传统型}       & \multicolumn{1}{l|}{传统型}             \\ \hline
+        \multicolumn{1}{|l|}{目录}         & \multicolumn{1}{l|}{count}     & \multicolumn{1}{l|}{admiss}     & \multicolumn{1}{l|}{chain}     & \multicolumn{1}{l|}{puzzle}          \\ \hline
+        \multicolumn{1}{|l|}{可执行文件名}     & \multicolumn{1}{l|}{count}     & \multicolumn{1}{l|}{admiss}     & \multicolumn{1}{l|}{chain}     & \multicolumn{1}{l|}{puzzle}          \\ \hline
+        \multicolumn{1}{|l|}{输入文件名}      & \multicolumn{1}{l|}{count.in}  & \multicolumn{1}{l|}{admiss.in}  & \multicolumn{1}{l|}{chain.in}  & \multicolumn{1}{l|}{puzzle.in}       \\ \hline
+        \multicolumn{1}{|l|}{输出文件名}      & \multicolumn{1}{l|}{count.out} & \multicolumn{1}{l|}{admiss.out} & \multicolumn{1}{l|}{chain.out} & \multicolumn{1}{l|}{puzzle.out}      \\ \hline
+        \multicolumn{1}{|l|}{每个测试点时限}    & \multicolumn{1}{l|}{1.0秒}      & \multicolumn{1}{l|}{1.0秒}       & \multicolumn{1}{l|}{1.0秒}      & \multicolumn{1}{l|}{1.0秒}            \\ \hline
+        \multicolumn{1}{|l|}{内存限制}       & \multicolumn{1}{l|}{512MiB}    & \multicolumn{1}{l|}{512MiB}     & \multicolumn{1}{l|}{512MiB}    & \multicolumn{1}{l|}{512MiB}          \\ \hline
+        \multicolumn{1}{|l|}{子任务数目}      & \multicolumn{1}{l|}{10}        & \multicolumn{1}{l|}{10}         & \multicolumn{1}{l|}{10}        & \multicolumn{1}{l|}{20}              \\ \hline
+        \multicolumn{1}{|l|}{测试点是否等分}    & \multicolumn{1}{l|}{是}         & \multicolumn{1}{l|}{是}          & \multicolumn{1}{l|}{是}         & \multicolumn{1}{l|}{是}               \\ \hline
+        提交源程序文件名                         &                                &                                 &                                &                                      \\ \hline
+        \multicolumn{1}{|l|}{对于C++语言}    & \multicolumn{1}{l|}{count.cpp} & \multicolumn{1}{l|}{admiss.cpp} & \multicolumn{1}{l|}{chain.cpp} & \multicolumn{1}{l|}{puzzle.cpp}      \\ \hline
+        \multicolumn{1}{|l|}{对于C语言}      & \multicolumn{1}{l|}{count.c}   & \multicolumn{1}{l|}{admiss.c}   & \multicolumn{1}{l|}{chain.c}   & \multicolumn{1}{l|}{puzzle.c}        \\ \hline
+        \multicolumn{1}{|l|}{对于Pascal语言} & \multicolumn{1}{l|}{count.pas} & \multicolumn{1}{l|}{admiss.pas} & \multicolumn{1}{l|}{chain.pas} & \multicolumn{1}{l|}{puzzle.pas}      \\ \hline
+        编译选项                             &                                &                                 &                                &                                      \\ \hline
+        \multicolumn{1}{|l|}{对于C++语言}    & \multicolumn{1}{l}{}           & \multicolumn{1}{l}{-O2 -lm}     & \multicolumn{1}{l}{}           & \multicolumn{1}{l|}{}                \\ \hline
+        \multicolumn{1}{|l|}{对于C语言}      & \multicolumn{1}{l}{}           & \multicolumn{1}{l}{-O2 -lm}     & \multicolumn{1}{l}{}           & \multicolumn{1}{l|}{}                \\ \hline
+        \multicolumn{1}{|l|}{对于Pascal语言} & \multicolumn{1}{l}{}           & \multicolumn{1}{l}{-O2}         & \multicolumn{1}{l}{}           & \multicolumn{1}{l|}{}                \\ \hline
+    \end{tabular}
+\end{table}
+\newpage
+
+\centerline{\LARGE{$\textbf{因子个数}\text{(count)}$}}
+\subsubsection{题目描述}
+\paragraph{
+    给定一个整数$n$,请求出$n$有多少个因子。
+}
+\subsubsection{输入格式}
+\paragraph{第一行一个整数 $n$，代表这个整数}
+\subsubsection{输出格式}
+\paragraph{一行一个整数表示$n$的因子数}
+\subsubsection{样例组}
+\begin{table}[H]
+    \begin{tabular}{|l|l|}
+        \hline
+        Input\#1: & Output\#1: \\ \hline
+        6         & 4          \\ \hline
+    \end{tabular}
+\end{table}
+\subsubsection{提示与说明}
+\paragraph{$6$的因子是$1,2,3,6$，共4个}
+\paragraph{对于$30\%$的数据，$1 \le n \le 10^6$}
+\paragraph{对于$70\%$的数据，$1 \le n \le 10^9$}
+\paragraph{对于$100\%$的数据，$1 \le n \le 10^{12}$}
+\newpage
+
+\centerline{\LARGE{$\textbf{志愿录取}\text{(admiss)}$}}
+\subsubsection{题目背景}
+\paragraph{
+    紧张的中考结束了，$A$市教育局却遇到了一个难题——他们不知道这些学生应该怎么录取……
+}
+\subsubsection{题目描述}
+\paragraph{
+    $A$市希望以这样的一种方式进行录取：总共有$m$所学校。每个学生都会有$a$个想去的学校，$A$市会将这些人按照成绩从高到低排位（如果分数相同，则按照输入顺序决定先后），然后从高到低遍历，对于每一个学生，都执行如下操作：
+}
+\paragraph{
+    1、考虑该学生是否超过最低录取线$low$，如果超过，进行第$2$步，否则，输出$-1$
+}
+\paragraph{
+    2、尝试将该学生放入他第一志愿的学校，如果该学校人未满，则该学生被该学校录取，否则，尝试将此学生放入他第二志愿的学校，以此类推，直到该学生被某学校录取。若一直没有被录取，输出-1。
+}
+\paragraph{
+    最终输出所有人的录取结果。
+}
+\subsubsection{输入格式}
+\paragraph{
+    第一行三个整数$m,n,a,low$分别代表学校数，学生数，每个学生志愿学校数，最低分数线
+}
+\paragraph{
+    接下来$m$行，一行一个字符串,一个整数，分别代表了这m所学校的名字和招生人数。
+}
+\paragraph{
+    接下来$n*(a+2)$行,共$n$组数据，每组数据包含以下信息：
+}
+\paragraph{
+    第一行一个字符串$name$，代表了这个人的名字
+}
+\paragraph{
+    第二行一个整数$score$，代表了这个人的成绩
+}
+\paragraph{
+    接下来$a$行，一行一个字符串，代表了这个人的志愿学校名字}
+\subsubsection{输出格式}
+\paragraph{输出$n$组，每组格式如下：
+}
+\paragraph{
+    第一行一个字符串，输出这个人的名字
+}
+\paragraph{
+    第二行一个浮点数，输出这个人的成绩
+}
+\paragraph{
+    第三行一个字符串，输出这个人的录取学校}
+\subsubsection{样例组}
+\begin{table}[H]
+    \begin{tabular}{|l|l|}
+        \hline
+        Input\#1:                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             & Output\#1:                                                                                                                                                                                  \\ \hline
+        \begin{tabular}[c]{@{}l@{}}3 3 2 570\\ Binjiang\_Campus\_Hangzhou\_No.2\_High\_School 1\\ Xixi\_Campus\_Hangzhou\_Xuejun\_High\_School 1\\ Xiasha\_Campus\_Hangzhou\_No.4\_High\_School 1\\ bjyRain\\ 586 \\ Xixi\_Campus\_Hangzhou\_Xuejun\_High\_School\\ Xiasha\_Campus\_Hangzhou\_No.4\_High\_School\\ MaxXie\\ 590\\ Binjiang\_Campus\_Hangzhou\_No.2\_High\_School\\ Xixi\_Campus\_Hangzhou\_Xuejun\_High\_School\\ LimitGuo\\ 568\\ Binjiang\_Campus\_Hangzhou\_No.2\_High\_School\\ Xiasha\_Campus\_Hangzhou\_No.4\_High\_School\end{tabular} & \begin{tabular}[c]{@{}l@{}}MaxXie\\ 590\\ Binjiang\_Campus\_Hangzhou\_No.2\_High\_School\\ bjyRain\\ 586 \\ Xixi\_Campus\_Hangzhou\_Xuejun\_High\_School\\ LimitGuo\\ 568\\ -1\end{tabular} \\ \hline
+    \end{tabular}
+\end{table}
+\subsubsection{提示与说明}
+\paragraph{
+    该数据中，按照成绩排序是$MaxXie,bjyRain,LimitGuo$，然后开始将他们放入各自的第一志愿学校，显然的$MaxXie,bjyRain$都被第一志愿录取了，而$LimitGuo$由于分数低于最低分数线$low$，所以没有被录取
+}
+\paragraph{
+    对于$100\%$的数据，满足$1 \le m \le 30, 1 \le n \le 1000, 1 \le a \le 20, 540\le low \le 570,0 \le score \le 600$
+}
+\paragraph{
+    题目保证学校名字与该人名字不出现空格。
+}
+\newpage
+
+\centerline{\LARGE{$\textbf{食物链}\text{(chain)}$}}
+\subsubsection{题目背景}
+\paragraph{
+    就读九年级的$syt$小朋友总是数不清食物链个数……
+}
+\subsubsection{题目描述}
+\paragraph{
+    自然界中有很多动物，这些动物之间可能存在捕食关系，从最底层到最高层便组成了一条食物链。现在，给出了这些动物间的捕食关系，请你编写一个程序，能够计算出食物链的个数。（注意，一个动物也算一条食物链）
+}
+\subsubsection{输入格式}
+\paragraph{
+    一行两个整数$n,m$，分别代表了动物数量和捕食关系数量。
+}
+\paragraph{
+    接下来$m$行，每行两个整数$a,b$，代表了$a$被$b$捕食的一个关系。
+}
+\subsubsection{输出格式}
+\paragraph{
+    一行一个整数，表示食物链个数。
+}
+\subsubsection{样例组}
+\begin{table}[H]
+    \begin{tabular}{|l|l|}
+        \hline
+        Input\#1:                                                                       & Output\#1: \\ \hline
+        \begin{tabular}[c]{@{}l@{}}7 6\\ 1 3\\ 2 3\\ 3 4\\ 4 5\\ 2 5\\ 6 7\end{tabular} & 4          \\ \hline
+    \end{tabular}
+\end{table}
+\paragraph{
+    样例组2见选手文件夹下的example/chain/example2.in与example/chain/example2.ans
+}
+\subsubsection{提示与说明}
+
+\paragraph{
+    对于$50\%$的数据，满足$1\le n \le 100,1\le m \le 400$
+}
+\paragraph{
+    对于$100\%$的数据，满足$1\le n \le 100000,1\le m \le 400000$
+}
+\paragraph{题目中保证食物链不存在环（包括自环），重边。
+}
+
+\newpage
+
+\centerline{\LARGE{$\textbf{Love and Puzzle}\text{(puzzle)}$}}
+\subsubsection{题目背景}
+\paragraph{$bjyRain$和$zlx$小朋友手牵着手去了$xj$中学，但是刚刚到$xj$中学的那一刻就遇到了一个问题：他们迷路了……}
+\subsubsection{题目描述}
+\paragraph{$bjyRain$小朋友呆在了一楼，$zlx$小朋友呆在了$x$楼，他们都彼此十分想见对方，但是被一座又一座迷宫困住。}
+\paragraph{每一层的迷宫都是一个节点数相同，边数不同的图。在这个迷宫中，经过每一条边都要消耗不同的体力$v$。}
+\paragraph{每一层相邻（如第一层到第二层，第三层到第四层）且编号相同的节点可以无消耗地向上穿梭（如第一层的$1$节点可以直接到第二层的$1$节点）。}
+\paragraph{$bjyRain$在第一层的$1$号节点，$zlx$在第$x$层的$m$号节点现在，$bjyRain$找到了你，想要你编写一个程序，找出他们能见面消耗的最小体力，输出这个体力值。}
+\subsubsection{输入格式}
+\paragraph{第一行三个整数 $x,m$，分别代表楼层数，每层节点数。}
+\paragraph{接下来一行有$x$个整数$n_1, n_2,...,n_x$，分别代表了每一层的边数。}
+\paragraph{接下来$x * n$行，每$n$行代表了一个图，在这$n$行中，每行三个整数$start,end,value$，代表了从$start$开始到$end$权为$value$的一条无向边。}
+\subsubsection{输出格式}
+\paragraph{一个整数$l$，代表了最短路长度。}
+\subsubsection{样例组}
+\begin{table}[]
+    \begin{tabular}{|l|l|}
+        \hline
+        Input\#1:                                                                                                         & Output\#1: \\ \hline
+        \begin{tabular}[c]{@{}l@{}}1 5\\ 6\\ 1 2 2\\ 2 5 3\\ 4 5 2\\ 2 4 1\\ 1 3 4\\ 2 3 1\end{tabular}                   & 5          \\ \hline
+        Input\#2:                                                                                                         & Output\#2: \\ \hline
+        \begin{tabular}[c]{@{}l@{}}2 4\\ 4 4\\ 1 2 3\\ 2 3 5\\ 1 3 1\\ 2 4 2\\ 3 4 2\\ 1 3 2\\ 1 2 3\\ 2 3 3\end{tabular} & 3          \\ \hline
+    \end{tabular}
+\end{table}
+\newpage
+\subsubsection{提示与说明}
+\paragraph{对于样例1，该图不分层，所以最短路是1->2->5（答案不唯一）}
+\paragraph{对于样例2，分两层，最短路是L1P1->L1P3->L2P3->L2P4（L代表第几层，代表节点编号）}
+\paragraph{输入的这些图是从下到上分布的}
+\begin{table}[H]
+    \begin{tabular}{|l|l|l|l|l|}
+        \hline
+        节点编号   & 层数                               & 点数                                & 边数                     & 特殊说明                        \\ \hline
+        P1     & \multirow{4}{*}{x=1}             & m=1                               & n=0                    & /                           \\ \cline{1-1} \cline{3-5}
+        P2-3   &                                  & \multirow{3}{*}{$1 \le m\le 100$} & \multirow{2}{*}{n=m-1} & $\forall start,end=start+1$ \\ \cline{1-1} \cline{5-5}
+        P4-5   &                                  &                                   &                        & \multirow{5}{*}{/}          \\ \cline{1-1} \cline{4-4}
+        P6-8   &                                  &                                   & $1 \le n \le 1000$     &                             \\ \cline{1-4}
+        P9-10  & \multirow{3}{*}{$2 \le x \le 5$} & $1 \le m \le 20$                  & $1 \le n \le 100$      &                             \\ \cline{1-1} \cline{3-4}
+        P11-12 &                                  & $20 \le m \le 100$                & $1 \le n \le 400$      &                             \\ \cline{1-1} \cline{3-4}
+        P13-20 &                                  & $100 \le m \le 1000$              & $1 \le n \le 100000$   &                             \\ \hline
+    \end{tabular}
+\end{table}
+\paragraph{题目保证一定存在一条路径}
+\paragraph{题目保证无重边，自环}
+\newpage
+\end{document}

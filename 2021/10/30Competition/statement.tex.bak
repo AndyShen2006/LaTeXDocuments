@@ -1,0 +1,183 @@
+\documentclass[final,11pt,oneside,UTF8]{report}
+\usepackage{ctex}
+\usepackage{float}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{mhchem}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{listings}
+\usepackage{multicol}
+\begin{document}
+\centerline{\LARGE{普及组模拟试题}}
+\centerline{}
+\centerline{\LARGE{HZ-OI出题组}}
+\centerline{}
+\centerline{\LARGE{Oct.30th.2021}}
+\centerline{}
+\begin{table}[h]
+    \centering
+    \begin{tabular}{lllll}
+        \hline
+        \multicolumn{1}{|l|}{题目名称}       & \multicolumn{1}{l|}{吉布斯}    & \multicolumn{1}{l|}{小学数学题} & \multicolumn{1}{l|}{Constantinople} & \multicolumn{1}{l|}{成语接龙} \\ \hline
+        \multicolumn{1}{|l|}{题目类型}       & \multicolumn{1}{l|}{传统型}    & \multicolumn{1}{l|}{传统型}     & \multicolumn{1}{l|}{传统型}         & \multicolumn{1}{l|}{传统型}   \\ \hline
+        \multicolumn{1}{|l|}{目录}           & \multicolumn{1}{l|}{gibbs}     & \multicolumn{1}{l|}{math}       & \multicolumn{1}{l|}{ct}             & \multicolumn{1}{l|}{word}     \\ \hline
+        \multicolumn{1}{|l|}{可执行文件名}   & \multicolumn{1}{l|}{gibbs}     & \multicolumn{1}{l|}{math}       & \multicolumn{1}{l|}{ct}             & \multicolumn{1}{l|}{word}     \\ \hline
+        \multicolumn{1}{|l|}{输入文件名}     & \multicolumn{1}{l|}{gibbs.in}  & \multicolumn{1}{l|}{math.in}    & \multicolumn{1}{l|}{ct.in}          & \multicolumn{1}{l|}{word.in}  \\ \hline
+        \multicolumn{1}{|l|}{输出文件名}     & \multicolumn{1}{l|}{gibbs.out} & \multicolumn{1}{l|}{math.out}   & \multicolumn{1}{l|}{ct.out}         & \multicolumn{1}{l|}{word.out} \\ \hline
+        \multicolumn{1}{|l|}{每个测试点时限} & \multicolumn{1}{l|}{1.0秒}     & \multicolumn{1}{l|}{1.0秒}      & \multicolumn{1}{l|}{1.0秒}          & \multicolumn{1}{l|}{1.0秒}    \\ \hline
+        \multicolumn{1}{|l|}{内存限制}       & \multicolumn{1}{l|}{512MiB}    & \multicolumn{1}{l|}{512MiB}     & \multicolumn{1}{l|}{512MiB}         & \multicolumn{1}{l|}{512MiB}   \\ \hline
+        \multicolumn{1}{|l|}{子任务数目}     & \multicolumn{1}{l|}{5}         & \multicolumn{1}{l|}{10}         & \multicolumn{1}{l|}{10}             & \multicolumn{1}{l|}{5}        \\ \hline
+        \multicolumn{1}{|l|}{测试点是否等分} & \multicolumn{1}{l|}{是}        & \multicolumn{1}{l|}{是}         & \multicolumn{1}{l|}{否}             & \multicolumn{1}{l|}{否}       \\ \hline
+        提交源程序文件名                     &                                &                                 &                                     &                               \\ \hline
+        \multicolumn{1}{|l|}{对于C++语言}    & \multicolumn{1}{l|}{gibbs.cpp} & \multicolumn{1}{l|}{math.cpp}   & \multicolumn{1}{l|}{ct.cpp}         & \multicolumn{1}{l|}{word.cpp} \\ \hline
+        \multicolumn{1}{|l|}{对于C语言}      & \multicolumn{1}{l|}{gibbs.c}   & \multicolumn{1}{l|}{math.c}     & \multicolumn{1}{l|}{ct.c}           & \multicolumn{1}{l|}{word.c}   \\ \hline
+        \multicolumn{1}{|l|}{对于Pascal语言} & \multicolumn{1}{l|}{gibbs.pas} & \multicolumn{1}{l|}{math.pas}   & \multicolumn{1}{l|}{ct.pas}         & \multicolumn{1}{l|}{word.pas} \\ \hline
+        编译选项                             &                                &                                 &                                     &                               \\ \hline
+        \multicolumn{1}{|l|}{对于C++语言}    & \multicolumn{1}{l}{}           & \multicolumn{1}{l}{-O2 -lm}     & \multicolumn{1}{l}{}                & \multicolumn{1}{l|}{}         \\ \hline
+        \multicolumn{1}{|l|}{对于C语言}      & \multicolumn{1}{l}{}           & \multicolumn{1}{l}{-O2 -lm}     & \multicolumn{1}{l}{}                & \multicolumn{1}{l|}{}         \\ \hline
+        \multicolumn{1}{|l|}{对于Pascal语言} & \multicolumn{1}{l}{}           & \multicolumn{1}{l}{-O2}         & \multicolumn{1}{l}{}                & \multicolumn{1}{l|}{}         \\ \hline
+    \end{tabular}
+\end{table}
+\newpage
+
+\centerline{\LARGE{$\textbf{吉布斯}\text{(gibbs)}$}}
+\subsubsection{题目背景}
+\paragraph{
+    苦逼的syt又开始了他学习无机化学的一天……
+}
+\subsubsection{题目描述}
+\paragraph{
+    一天，syt小朋友在《无机化学》上看到了一个公式，叫做吉布斯─亥姆霍兹方程，是这样的:$\Delta G=\Delta H-T\Delta S$,这几个东西分别代表了吉布斯自由能变，焓变，热力学温度，熵变。
+}
+\paragraph{
+    其中，焓变$\Delta H$的求法是将生成物的所有标准生成焓变值$\Delta_f H^\theta$总和减去反应物的标准生成焓值$\Delta_f H^\theta$总和。类似的，熵变$\Delta S$的求法是将生成物的所有标准生成熵值$S^\theta$总和减去反应物的标准生成熵值$S^\theta$总和。
+}
+\paragraph{
+    这个东西有个奇妙的性质，就是当算出来的$\Delta G<0$时，反应自发，当$\Delta G>0$时，反应非自发，当$\Delta G=0$时，反应平衡。
+}
+\paragraph{
+    现在，syt小朋友已经通过查询热力学表得到了一个反应中各个生成物和反应物的$\Delta_f H^\theta,S^\theta$，并且知道反应温度$T$，问你这个反应能否进行。
+}
+\subsubsection{输入格式}
+\paragraph{一行三个整数$n,m,T$，分别代表反应物数量，生成物数量，反应温度}
+\paragraph{接下来n行，每行两个值，分别代表反应物的$\Delta_f H^\theta$和$S^\theta$}
+\paragraph{接下来m行，每行两个值，分别代表生成物的$\Delta_f H^\theta$和$S^\theta$}
+\subsubsection{输出格式}
+\paragraph{一行一个字符串，如果能自发反应就输出"Yes"，如果不能自发反应就输出"No"，如果反应平衡，则输出"Equilibrium"}
+\subsubsection{样例组}
+\begin{table}[]
+    \begin{tabular}{|l|l|}
+        \hline
+        Input\#1:                 & Output\#1: \\ \hline
+        \begin{tabular}[c]{@{}l@{}}1 2 300\\ 3000 1\\ 2000 2\\ 2000 2\end{tabular} & No         \\ \hline
+    \end{tabular}
+\end{table}
+\subsubsection{提示与说明}
+\paragraph{对于$100\%$的数据，$1\leq n,m\leq 5$，均不超出double范围}
+\newpage
+
+\centerline{\LARGE{$\textbf{小学数学题}\text{(math)}$}}
+\subsubsection{题目背景}
+\paragraph{
+    岳佬带着她的儿子来到的我们的教室。她的儿子正在做着他的数学老师布置给他做的数学题，但他的老师却绝没想到 $\text{Ta}$ 的学生的妈妈是一位语文老师，他妈妈所教的班里有这样一群数学天才（语文废柴）。
+}
+\subsubsection{题目描述}
+\paragraph{
+    岳佬的儿子不会做的一道数学题是这样的：给出了一个长度为 $n$ 的由数字组成的串，但你只需要保留其中的 $m$ 个数字，使这些数字按照原串中的相对顺序排列能得到一个最大的整数。请你帮他想想。
+}
+\subsubsection{输入格式}
+\paragraph{输入共两行。}
+\paragraph{第一行两个整数 $n,m$。}
+\paragraph{第二行一个不含空格的长为 $n$ 的串，意义在题目描述中已给出。}
+\subsubsection{输出格式}
+\paragraph{一行一个整数表示结果。}
+\subsubsection{样例组}
+\begin{table}[h]
+    \begin{tabular}{|l|l|}
+        \hline
+        Input\#1:                 & Output\#1: \\ \hline
+        \begin{tabular}[c]{@{}l@{}}9 6\\ 597382064\end{tabular} & 982064     \\ \hline
+    \end{tabular}
+\end{table}
+\subsubsection{提示与说明}
+\paragraph{对于 $10\%$ 的数据，$n\le 20$。}
+\paragraph{对于 $50\%$ 的数据，$n\le 10^4$。}
+\paragraph{对于 $100\%$ 的数据，$m\le n\le 10^5$。}
+\newpage
+
+\centerline{\LARGE{$\textbf{Constantinople}\text{(ct)}$}}
+\subsubsection{题目背景}
+\paragraph{
+    $1453$ 年，奥斯曼帝国大举进攻君士坦丁堡。而神仙
+    $\text{zjy}$ 并不想看到君堡沦陷，于是他发动神技，使君堡的守军增多了。
+}
+\subsubsection{题目描述}
+\paragraph{
+    奥斯曼帝国有 $n$ 支军队进攻君士坦丁堡，对于每支军队，$\text{ zjy }$应该在 $d_i$ 时刻前将其歼灭。但如果一支奥斯曼军队没有在该时刻前被歼灭，这支军队就会攻入君堡进行掠夺，造成 $w_i$ 点损失。$\text{ zjy }$的$\text{ CPU0 }$使他一次只能迎击一支奥斯曼军队，并花费一单位时间。他现在想知道，奥斯曼军队最少会对君士坦丁堡造成多少点损失。
+}
+\subsubsection{输入格式}
+\paragraph{
+    第一行一个正整数 $n$，表示奥斯曼军队的数量。
+}
+\paragraph{
+    接下来 $n$ 行，每行一个非负整数 $d_i$，$w_i$ 。
+}
+\subsubsection{输出格式}
+\paragraph{
+    一行一个整数，表示奥斯曼军队最少会对君士坦丁堡造成多少损失。
+}
+\subsubsection{样例组}
+
+\begin{table}[h]
+    \begin{tabular}{|l|l|}
+        \hline
+        Input\#1:                 & Output\#1: \\ \hline
+        \begin{tabular}[c]{@{}l@{}}6\\ 5 75\\ 3 24\\ 3 699\\ 1 56\\ 1 8\\ 5 17\end{tabular} & 8          \\ \hline
+    \end{tabular}
+\end{table}
+\begin{table}[h]
+    \begin{tabular}{|l|l|}
+        \hline
+        Input\#2:                 & Output\#2: \\ \hline
+        \begin{tabular}[c]{@{}l@{}}15\\ 1 36\\ 2 89\\ 2 78\\ 2 44\\ 5 7\\ 6 10\\ 4 15\\ 3 12\\ 4 114514\\ 6 11\\ 6 13\\ 2 19\\ 4 1919\\ 5 2243\\ 6 2214\end{tabular} & 167        \\ \hline
+    \end{tabular}
+\end{table}
+\subsubsection{提示与说明}
+\paragraph{
+    对于 $100\%$ 的数据，$1\le n\le 10000$，保证所有的 $d_i$，$w_i$ 都在 $int$ 范围内。
+}
+\newpage
+
+\centerline{\LARGE{$\textbf{成语接龙}\text{(word)}$}}
+\subsubsection{题目背景}
+\paragraph{人除我佬，此题欢乐 AK。 ——syt}
+\subsubsection{题目描述}
+\paragraph{一天，$\text{xyk}$ 小朋友找到了 $\text{syt}$ 小朋友玩成语接龙，说出了四个字“三顾茅庐”，若干轮后，进入了死局“为所欲为”。好胜心强的 $\text{syt}$ 小朋友感到非常愤怒，想要写一个程序知道是成语如何变成为所欲为的。由于$\text{syt}$ 小朋友实在太蒻了，所以他请了 $\text{AK}$ 了 $10^9$ 次 $\text{IOI}$ 的你解决这个问题。他给了你一本成语词典和开始成语，问你到达结束成语的全过程和共计步数（指每次转换的步数）。}
+\subsubsection{输入格式}
+\paragraph{第 $1$ 行一个字符串 $start$ 代表起始成语。}
+\paragraph{第 $2$ 行一个字符串 $end$ 代表结束成语。}
+\paragraph{第 $3$ 行一个数字 $n$ 代表字典大小。}
+\paragraph{第 $4$ 到 $n+3$ 行，每行一个字符串 $s$，代表字典中的一个成语。}
+\subsubsection{输出格式}
+\paragraph{输出第一行一个整数，代表转换次数。}
+\paragraph{第二行一个串，代表转换过程，使用“`->`”作为连接，“`->`”前后一个空格。若不存在路径，输出 $-1$。}
+\subsubsection{样例组}
+\begin{table}[h]
+    \begin{tabular}{|l|l|}
+        \hline
+        Input\#1:                 &
+        Output\#1:                  \\ \hline
+        \begin{tabular}[c]{@{}l@{}}ABCD\\ EFBA\\ 3\\ DEFG\\ GADE\\ EFBA\end{tabular} &
+        \begin{tabular}[c]{@{}l@{}}3\\ ABCD -\textgreater DEFG -\textgreater GADE -\textgreater EFBA\end{tabular}   \\ \hline
+    \end{tabular}
+\end{table}
+\newpage
+\subsubsection{提示与说明}
+\paragraph{样例中，转换过程是从 $ABCD$ 到 $DEFG$ 到 $GADE$ 到 $EFBA$，中间转换了 $3$ 次（就是箭头数）。}
+\paragraph{对于 $10\%$ 的数据满足 $n=1$}
+\paragraph{对于 $25\%$ 的数据满足 $1\leq n \leq 100$，且串长度不超过 $4$。}
+\paragraph{对于 $50\%$ 的数据满足 $1\leq n\leq 1000$。}
+\paragraph{对于 $100\%$ 的数据满足 $1\leq n\leq 1\times 10^5$ 且串长度均不超过 $6$，保证最短路径只有一条，字典 **一定** 包括字符串 $end$，且全部由大写字母组成。}
+\paragraph{本题采用 $\text{subtask}$，必须同一 $\text{subtask}$ 下所有数据通过才能得到该 $\text{subtask}$ 的分数，且数据已加强。}
+\newpage
+\end{document}

@@ -1,0 +1,109 @@
+\documentclass[final,11pt,oneside,UTF8]{article}
+\usepackage{ctex}
+\usepackage{float}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{amsmath,amsfonts,amssymb}
+
+\author{AndyShen2006}
+\date{May.21st.2021}
+\title{行列式求面积的向量原理}
+\begin{document}
+\maketitle
+\section{Introduction}
+\paragraph{
+    之前听父亲说过，说知道三边求面积用海伦公式，知道三点求面积用行列式。
+    当时基本一脸懵，什么是行列式。而当父亲给我写出这个式子的时候，我惊
+    到了，求面积竟然还有如此清新脱俗之法。在中学阶段，知道坐标求面积是
+    非常困难且需要动用很多技巧的，但是行列式无需技巧，只要会计算就可以。
+    但是每每我问起这个东西的数学原理时，得到的答案都是“这是一个巧合”。
+    这真是一个巧合吗，在以前，我认为是，但当我仔细学习向量和行列式之后，
+    我发现，这并不是一个巧合，我就写篇文章，简单说说这中间的原理。
+}
+\section{Problem}
+\paragraph{
+    假设已经有点A,B,C,坐标分别为(a1,a2),(b1,b2),(c1,c2),则存在该式：\\
+    \[
+        \pm 2S_{\triangle ABC}=
+        \left|\begin{array}{cccc}
+            a_1 & a_2 & 1 \\
+            a_2 & b_2 & 1 \\
+            c_1 & c_2 & 1
+        \end{array}\right|
+    \]
+}
+\section{Proof}
+\subsection{向量的叉积}
+\paragraph{
+    本章默认认为已经读过了向量的基本表示和运算。向量的叉积一般有两种形式，
+    设xyz轴的单位向量分别是$x_0 y_0 z_0, \textbf{A}=a_1x_0+a_2y_0+a_3z_0
+        \textbf{B}=b_1x_0+b_2y_0+b_3z_0$则表达式分别是：
+    1:行列式:\\
+    \[
+        \ \textbf{A} \times \textbf{B}=
+        \left|\begin{array}{cccc}
+            x_0 & y_0 & z_0 \\
+            a_1 & a_2 & a_3 \\
+            b_1 & b_2 & b_3
+        \end{array}\right|
+    \]
+    2:三角函数:\\
+    $$\textbf{A} \times \textbf{B} = n_0 \cdot |\textbf{A}| \cdot |\textbf{B}| \cdot \sin{\theta}$$
+    仔细观察，有没有发现上面那个像我们行列式求面积的方式，下面那个像我们
+    正弦求三角形面积的方式。这就是问题的关键所在。
+}
+\subsubsection{Main}
+\paragraph{
+    接着我们就说明这两者的相通性：\\
+    很显然，这三个点在同一平面内，故z值全部取0。\\
+    然后先将这三个向量归一化，我们以A点为原点，开始归一：\\
+    $$\textbf{AB}=\textbf{B}-\textbf{A}=(b_1-a_1)x_0+(b_2-a_2)y_0$$
+    $$\textbf{AC}=\textbf{C}-\textbf{A}=(c_1-a_1)x_0+(c_2-a_2)y_0$$
+    很显然，我们由三角形面积公式，因为sin值可能是负数，所以得到：\\
+    $$\pm 2S_{\triangle ABC}=AB \cdot AC \cdot \sin{\theta}$$
+    此处标量AB,AC即为$AB=|\textbf{AB}|,AC=|\textbf{AC}|$
+    然后我们将$\textbf{AB},\textbf{AC}$相乘，得到：
+    $$\textbf{AB} \times \textbf{AC}
+        =n_0 \cdot |\textbf{AB}| \cdot |\textbf{AC}| \cdot \sin{\theta}
+    $$
+    $$
+        |\textbf{AB} \times \textbf{AC}|=AB \cdot AC \cdot \sin{\theta}=\pm 2S_{\triangle ABC}
+    $$
+    \[
+        \ \textbf{AB} \times \textbf{AC}=
+        \left|\begin{array}{cccc}
+            x_0     & y_0     & z_0 \\
+            b_1-a_1 & b_2-a_2 & 0   \\
+            c_1-a_1 & c_2-a_2 & 0
+        \end{array}\right|
+    \]
+    由余子式展开化简后得到
+    \[
+        \ |\textbf{AB} \times \textbf{AC}|=
+        \left|\begin{array}{cccc}
+            b_1-a_1 & b_2-a_2 \\
+            c_1-a_1 & c_2-a_2
+        \end{array}\right|=\pm 2S_{\triangle ABC}
+    \]
+    该式与下面一个式子等价：
+    \[
+        \pm 2S_{\triangle ABC}=
+        \left|\begin{array}{cccc}
+            0       & 0       & 1 \\
+            b_1-a_1 & b_2-a_2 & 0 \\
+            c_1-a_1 & c_2-a_2 & 0
+        \end{array}\right|
+    \]
+    又与该式等价：
+    \[
+        \pm 2S_{\triangle ABC}=
+        \left|\begin{array}{cccc}
+            a_1 & a_2 & 1 \\
+            a_2 & b_2 & 1 \\
+            c_1 & c_2 & 1
+        \end{array}\right|
+    \]
+    该式即为题目式子等价\\
+    $\textbf{Q.E.D}$
+}
+\end{document}

@@ -1,0 +1,12 @@
+\documentclass[UTF8]{ctexart}
+\usepackage{amsmath}
+\usepackage{fontsize}
+\usepackage{fontspec}
+\begin{document}
+\fontsize{10pt}{10pt}
+\fontspec{"微软雅黑"}
+$\text{原PID：}K_pe(t)+K_i\Sigma e(t)+K_d[e(t)-e(t-1)]\\$
+$=Kp[e(t)+\frac{1}{T_i}\int_{0}^{T_i} e(t)dt+T_d\frac{de(t)}{dt}]$
+$$\text{巡线PID:} K_pe(t)+K_d[e(t)-e(t-1)]$$
+$$\text{归一化(设光感值为v，黑线值为min，白线值为max)：} \frac{v-min}{min-max}\times 100$$
+\end{document}

@@ -1,0 +1,15 @@
+*.in
+*.out
+*.pdf
+*.aux
+*.log
+*.dvi
+*.synctex.gz
+*.zip
+*.cpp
+*.ans
+*.cdf
+*.fls
+*.fdb_latexmk
+*.xdv
+group/

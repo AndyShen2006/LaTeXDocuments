@@ -1,0 +1,353 @@
+\documentclass[final,11pt,oneside,UTF8]{report}
+\usepackage{ctex}
+\usepackage{float}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{mhchem}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{listings}
+\usepackage{fontspec}
+\usepackage{xcolor}
+\usepackage{multicol}
+\usepackage{multirow}
+\newfontfamily\mono{JetBrains Mono}
+\lstset{
+    columns=fixed,
+    numbers=left,                                        % 在左侧显示行号
+    numberstyle=\tiny\color{gray},                       % 设定行号格式
+    frame=none,                                          % 不显示背景边框
+    backgroundcolor=\color[RGB]{245,245,244},            % 设定背景颜色
+    keywordstyle=\color[RGB]{41,21,255},                 % 设定关键字颜色
+    numberstyle=\footnotesize\color{darkgray},
+    commentstyle=\mono\color[RGB]{0,96,96},                % 设置代码注释的格式
+    stringstyle=\mono\color[RGB]{0,128,31},   % 设置字符串格式
+    showstringspaces=false,                              % 不显示字符串中的空格
+    language=c++,                                        % 设置语言
+}
+\begin{document}
+\centerline{\LARGE{普及组模拟试题 题解}}
+\centerline{}
+\centerline{\LARGE{AndyShen2006}}
+\centerline{}
+\centerline{\LARGE{Jun.25th.2022}}
+\centerline{}
+\newpage
+\centerline{\LARGE{$\textbf{std中含有的一些在算法竞赛中不常见的C++用法}$}}
+\subsection{特殊的迭代用法}
+{\mono\begin{lstlisting}
+    for (range-declaration : range-expression) {
+        statements
+    }
+\end{lstlisting}}
+\paragraph{这个写法是C++11新加入的，$range-declaration$作为一个变量，会循环迭代$range-expression$这一个容器中的每一个值。当做一些简单的迭代操作时这会十分方便}
+\subsection{比较运算符的重载以及greater<Class>}
+{
+    \mono\begin{lstlisting}
+    bool operator>(const Type& b) const
+    {
+        return this->sth>b.sth;
+    }
+\end{lstlisting}
+}
+\paragraph{这在类当中重载了一个一个大于运算符，表示对象本身大于比较对象时返回true。其中，this是个指针，所以要使用箭头语法"->"，而b只是一个引用，所以要用点语法"."}
+\paragraph{同时，greater<Class>成为了一个比较大小的类，在map等需要排序的容器中直接使用这个类即可，但是由于sort()的排序规则是一个函数指针或functor，所以要写成greater<class>()}
+\subsection{goto的使用}
+{
+    \mono\begin{lstlisting}
+goto Label;
+//Do something
+Label:
+//Do something
+    \end{lstlisting}
+}
+\paragraph{goto直接跳转到了Label所在那一行继续执行。对于快速跳出循环等操作十分方便}
+\newpage
+\centerline{\LARGE{$\textbf{因子个数}\text{(count)}$}}
+\paragraph{这一题特别水，就是给大家打个卡。}
+\paragraph{很显然的，对于每一个因子$a$,$\frac{n}{a}$肯定也是$n$的因子，所以只要a在$\sqrt{n}$范围内遍历，然后如果发现某个数是$n$的因子，则答案加二（对于完全平方，特判加一）}
+\paragraph{
+    代码如下（该代码由hpc提供）：
+}
+{
+    \mono
+    \begin{lstlisting}
+#include <bits/stdc++.h>
+#define ll long long
+using namespace std;
+ll n, ans;
+int main() {
+  freopen("count.in", "r", stdin);
+  freopen("count.out", "w", stdout);
+  scanf("%lld", &n);
+  for (ll i = 1; i * i <= n; i++) {
+    if (n % i == 0) {
+      if (i * i == n)
+        ans++;
+      else
+        ans += 2;
+    }
+  }
+  printf("%lld\n", ans);
+  return 0;
+}
+    \end{lstlisting}
+}
+\newpage
+\centerline{\LARGE{$\textbf{志愿录取}\text{(admiss)}$}}
+\paragraph{
+    没有什么特别的，这题就是模拟。由于对于同分的人要按照输入顺序排序，所以要使用稳定的$stable\_sort$（用法和sort完全相同，区别在于$sort$是快速排序，$stable\_sort$是归并排序，使用空间换时间，是一种稳定的排序手段）(数据是真难出)
+}
+\paragraph{
+    不过值得注意的是，这个和杭州中考的录取模式大体接近，所以有一定参考意义。
+}
+\paragraph{
+    代码如下：
+}
+{\mono
+    \begin{lstlisting}
+#include <bits/stdc++.h>
+
+using namespace std;
+
+struct Student {
+    string name, current_school = "-1";
+    int score = -1;
+    vector<string> schools;
+    bool operator>(const Student& b) const
+    {
+        return this->score > b.score;
+    }
+    bool operator<(const Student& b) const
+    {
+        return this->score < b.score;
+    }
+    void clearData()
+    {
+        name.clear();
+        score = -1;
+        schools.clear();
+    }
+};
+
+// <schoolname,<expect_number,current_number>>
+map<string, pair<int, int>> schools;
+vector<Student> datas; // score,name,schools
+
+int main()
+{
+    // freopen("data/admiss10.in", "r", stdin);
+    // freopen("data/admiss10.out", "w", stdout);
+    int m, n, a, low, tempNum;
+    cin >> m >> n >> a >> low;
+    string tempStr;
+    for (int i = 1; i <= m; i++) {
+        cin >> tempStr >> tempNum;
+        schools.insert(make_pair(tempStr,make_pair(tempNum, 0)));
+    }
+    Student tempStudent;
+    for (int i = 1; i <= n; i++) {
+        tempStudent.clearData();
+        cin >> tempStudent.name >> tempStudent.score;
+        for (int j = 1; j <= a; j++) {
+            cin >> tempStr;
+            tempStudent.schools.push_back(tempStr);
+        }
+        datas.push_back(tempStudent);
+    }
+    stable_sort(datas.begin(), datas.end(), greater<Student>());
+    for (auto& it : datas) {
+        if (it.score < low) {
+            // The score of this student is too low!
+            continue;
+        }
+        for (const auto& es : it.schools) {
+            // This student can be inserted
+            if (schools[es].first > schools[es].second) { 
+                // Admiss this student    
+                it.current_school = es;
+                // Count of this school is added 
+                schools[es].second++;
+                // compute next student 
+                goto isAdmiss; 
+            }
+        }
+    isAdmiss:
+        continue;
+    }
+    for (auto it : datas) {
+        cout << it.name << endl
+             << it.score << endl
+             << it.current_school << endl;
+    }
+    return 0;
+}
+\end{lstlisting}
+}
+\newpage
+
+\newpage
+\centerline{\LARGE{$\textbf{食物链}\text{(chain)}$}}
+\paragraph{这题没什么好说的，题目保证了数据中不会出现环，那么食物链是有向的，食物链组成的食物网便是有向无环图(DAG)，此处假设最底层的食物链个数是1（一个点），用卡恩算法跑一遍拓扑排序，跑过去的过程中将高阶的捕食者加上它所有食物已有的食物链就是高阶捕食者的食物链个数，向上迭代后统计所有出度为0（也就是不被捕食）的动物的食物链个数和就是答案}
+\paragraph{代码如下：}
+{
+    \mono\begin{lstlisting}
+#include <bits/stdc++.h>
+
+using namespace std;
+
+constexpr int N = 1000000;
+
+int inDeg[N] = { 0 };
+int outDeg[N] = { 0 }; // It is used for checking answer
+vector<int> G[N];
+queue<int> Q;
+int cnt[N] = { 0 };
+
+int main()
+{
+    // freopen("data/example.in", "r", stdin);
+    // freopen("data/example.out", "w", stdout);
+    int n, m;
+    cin >> n >> m;
+    int from, to;
+    for (int i = 1; i <= m; i++) {
+        cin >> from >> to;
+        G[from].push_back(to);
+        inDeg[to]++;
+        outDeg[from]++;
+    }
+    for (int i = 1; i <= n; i++) {
+        if (inDeg[i] == 0) {
+            Q.push(i);
+            cnt[i] = 1;
+        }
+    }
+    int node;
+    while (!Q.empty()) {
+        node = Q.front(), Q.pop();
+        for (auto it : G[node]) {
+            // Add count
+            cnt[it] += cnt[node];
+            // "Delete" this edge
+            inDeg[it]--;
+            if (inDeg[it] == 0) {
+                Q.push(it);
+            }
+        }
+    }
+    int ans = 0;
+    for (int i = 1; i <= n; i++) {
+        // if (outDeg[i] == 0) {
+        //     printf("%d %d\n", i, cnt[i]);
+        // }
+        ans += outDeg[i] == 0 ? cnt[i] : 0;
+    }
+
+    cout << ans << endl;
+    return 0;
+}
+    \end{lstlisting}
+}
+\newpage
+\centerline{\LARGE{$\textbf{Love and Puzzle}\text{(puzzle)}$}}
+\paragraph{这题有个小彩蛋就是：题目中给的主人公以及事件（除迷路这件事本身外）是真实存在的。}
+\paragraph{这题中，每一层都是一张图，层与层之间的穿梭就是权为0的一条边，将最后这张分层图建好之后，两个人之间的距离只要跑一遍最短路就可以了。}
+\paragraph{从小技巧上来讲，由于m最大只有1000，所以我可以使用模的方式，对于第$x$层的点$n$，可以让它的编号为$1000(x-1)+n$，从而构建出这幅图。}
+\paragraph{本题会对几种办法给出不同的分数}
+\paragraph{对于不会分层图的，有这几种做法可以拿到部分分}
+\paragraph{由于题目中给了$40\%$的数据是不分层的情况，对于不分层的情况有这几种做法：}
+\paragraph{1.直接骗分1：因为题目中给了$5\%$的数据是两个人就在一起的，直接输出0即可，能够有5分。}
+\paragraph{2.直接骗分2：题目中还有$10\%$的数据是一条链，直接加起来就是答案，与方法1结合能够骗到15分。}
+\paragraph{3.LCA、深搜或广搜：题目中有$10\%$的数据，这张图是一棵树，那么两个人就在这棵树的两个节点上，最短路只要跑LCA（当然，没必要打递增）或者跑一遍深搜广搜全搜出来长度比一比大小输出即可。}
+\paragraph{4.Floyd，Bellman-Ford，SPFA，Dijkstra：对于余下$15\%$的数据，这张图就是一张图，只是不分层，直接跑最短路中任何一个都能拿到这些点（当然，上面那些自然也拿到了）。}
+\paragraph{对于看出分层图的，有这几种做法能够拿到部分分或者全分}
+\paragraph{对于余下$60\%$的数据，有这些办法能拿到不同分数}
+\paragraph{1.Floyd:有$10\%$的数据点数据量比较小，所以直接跑Floyd也能够跑过}
+\paragraph{2.Bellman-Ford:有$10\%$的数据量差不多，所以Bellman-Ford $O(n^2)$的复杂度也能够跑得过}
+\paragraph{3.SPFA:有$15\%$的数据较大，但是比较随机，SPFA能够跑出不错的分数}
+\paragraph{4.Dijkstra:余下的$25\%$的数据，特别卡了SPFA，直接将它卡到了过不了的程度，所以只有Dijkstra能够解决，当然，这是正解}
+\paragraph{做成表格就是这样}
+\begin{table}[H]
+    \begin{tabular}{|l|l|l|l|}
+        \hline
+        是否分层                   & 方法           & 对应数据点  & 可得分数                    \\ \hline
+        \multirow{4}{*}{不考虑分层} & 骗分1          & P1     & 5pts                    \\ \cline{2-4}
+                               & 骗分2          & P2-3   & 不与1结合10pts，如使用特判，则15pts \\ \cline{2-4}
+                               & LCA,DFS,BFS  & P4-5   & 25pts                   \\ \cline{2-4}
+                               & Floyd等       & P6-8   & 40pts                   \\ \hline
+        \multirow{4}{*}{考虑分层}  & Floyd        & P9-10  & 50pts                   \\ \cline{2-4}
+                               & Bellman-Ford & P11-12 & 60pts                   \\ \cline{2-4}
+                               & SPFA         & P13-15 & 75pts                   \\ \cline{2-4}
+                               & Dijkstra     & P16-20 & 100pts                  \\ \hline
+    \end{tabular}
+\end{table}
+\paragraph{由于方法过多，部分分的代码此处不展示，只展示std如下}
+{
+    \mono\begin{lstlisting}
+#include <bits/stdc++.h>
+using namespace std;
+
+typedef pair<int, int> P;
+constexpr int M = 5005;
+
+int cntEdges[6];
+vector<P> G[M];
+int dis[M];
+priority_queue<P, vector<P>, greater<P>> pq;
+
+int main() {
+  // freopen("data/puzzle20.in", "r", stdin);
+  // freopen("data/puzzle20.out", "w", stdout);
+  //     Input
+  int x, m, start, end, val;
+  cin >> x >> m;
+  for (int i = 1; i <= x; i++) {
+    cin >> cntEdges[i];
+  }
+  for (int i = 1; i <= x; i++) {
+    for (int j = 1; j <= cntEdges[i]; j++) {
+      cin >> start >> end >> val;
+      // For level x, Point P is p+1000*(x-1)
+      // For example1:Level 1, point 2 is 2
+      // Example2:Level 3, point 4 is 2004
+      G[start + 1000 * (i - 1)].push_back(P(end 
+      + 1000 * (i - 1), val));
+      G[end + 1000 * (i - 1)].push_back(P(start 
+      + 1000 * (i - 1), val));
+    }
+  }
+  // Finish Generate Graph
+  for (int j = 1; j <= m; j++) {
+    for (int i = 1; i <= x - 1; i++) {
+      // Add edges between near levels
+      // For example:Level 1,Point 1(1),
+      // Add edge to Level 2,Point1(1001)
+      G[j].push_back(P(j + 1000 * i, 0));
+      G[j + 1000 * i].push_back(P(j, 0));
+    }
+  }
+  // Shortest Path:Dijkstra Algorithm
+  memset(dis, 0x3f, sizeof(dis));
+  dis[1] = 0;
+  pq.push(P(0, 1));
+  while (!pq.empty()) {
+    P p = pq.top();
+    pq.pop();
+    if (dis[p.second] < p.first) {
+      continue;
+    }
+    for (auto it : G[p.second]) {
+      if (dis[p.second] + it.second < dis[it.first]) {
+        dis[it.first] = dis[p.second] + it.second;
+        pq.push(P(dis[it.first], it.first));
+      }
+    }
+  }
+  // Output
+  cout << dis[m + 1000 * (x - 1)] << endl;
+  return 0;
+}
+    \end{lstlisting}
+}
+\newpage
+\end{document}

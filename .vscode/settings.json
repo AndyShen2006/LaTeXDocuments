@@ -1,0 +1,17 @@
+{
+    "sqltools.connections": [
+        {
+            "database": "authme",
+            "driver": "MySQL",
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "name": "Minecraft_server",
+            "password": "syt781221",
+            "port": 3306,
+            "previewLimit": 50,
+            "server": "localhost",
+            "username": "AndyShen"
+        }
+    ]
+}

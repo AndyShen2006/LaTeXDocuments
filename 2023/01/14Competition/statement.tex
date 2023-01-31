@@ -1,0 +1,185 @@
+\documentclass[final,11pt,oneside,UTF8]{report}
+\usepackage{ctex}
+\usepackage{float}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{mhchem}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{listings}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{setspace}
+\begin{document}
+\centerline{\LARGE{普及组模拟试题}}
+\centerline{}
+\centerline{\LARGE{Jan.14th.2023}}
+\centerline{}
+\centerline{出题人:AndyShen}
+\centerline{}
+\begin{table}[h]
+    \centering
+    \begin{tabular}{lllll}
+        \hline
+        \multicolumn{1}{|l|}{题目名称}    & \multicolumn{1}{l|}{算账}        & \multicolumn{1}{l|}{大米老师}                  & \multicolumn{1}{l|}{金钱游戏}      \\ \hline
+        \multicolumn{1}{|l|}{题目类型}    & \multicolumn{1}{l|}{传统型}       & \multicolumn{1}{l|}{传统型}                   & \multicolumn{1}{l|}{传统型}       \\ \hline
+        \multicolumn{1}{|l|}{目录}      & \multicolumn{1}{l|}{count}     & \multicolumn{1}{l|}{dami}                  & \multicolumn{1}{l|}{money}     \\ \hline
+        \multicolumn{1}{|l|}{可执行文件名}  & \multicolumn{1}{l|}{count}     & \multicolumn{1}{l|}{dami}                  & \multicolumn{1}{l|}{money}     \\ \hline
+        \multicolumn{1}{|l|}{输入文件名}   & \multicolumn{1}{l|}{count.in}  & \multicolumn{1}{l|}{dami.in}               & \multicolumn{1}{l|}{money.in}  \\ \hline
+        \multicolumn{1}{|l|}{输出文件名}   & \multicolumn{1}{l|}{count.out} & \multicolumn{1}{l|}{dami.out}              & \multicolumn{1}{l|}{money.out} \\ \hline
+        \multicolumn{1}{|l|}{每个测试点时限} & \multicolumn{1}{l|}{1.0秒}      & \multicolumn{1}{l|}{1.0秒}                  & \multicolumn{1}{l|}{1.0秒}      \\ \hline
+        \multicolumn{1}{|l|}{内存限制}    & \multicolumn{1}{l|}{512MiB}    & \multicolumn{1}{l|}{512MiB}                & \multicolumn{1}{l|}{512MiB}    \\ \hline
+        \multicolumn{1}{|l|}{子任务数目}   & \multicolumn{1}{l|}{10}        & \multicolumn{1}{l|}{10}                    & \multicolumn{1}{l|}{10}        \\ \hline
+        \multicolumn{1}{|l|}{测试点是否等分} & \multicolumn{1}{l|}{是}         & \multicolumn{1}{l|}{是}                     & \multicolumn{1}{l|}{是}         \\ \hline
+        提交源程序文件名                      &                                &                                            &                                \\ \hline
+        \multicolumn{1}{|l|}{对于C++语言} & \multicolumn{1}{l|}{count.cpp} & \multicolumn{1}{l|}{dami.cpp}              & \multicolumn{1}{l|}{money.cpp} \\ \hline
+        编译选项                          &                                &                                            &                                \\ \hline
+        \multicolumn{1}{|l|}{对于C++语言} & \multicolumn{1}{l}{}           & \multicolumn{1}{l}{-O2 -std=c++14 -static} & \multicolumn{1}{l|}{}          \\ \hline
+    \end{tabular}
+\end{table}
+\begin{spacing}{0}
+    \subsubsection{注意事项（请仔细阅读）}
+    \paragraph{1.文件名（程序名和输入输出文件名）必须使用英文小写。}
+    \paragraph{2.C/C++中函数main()的返回值类型必须是int,程序正常结束是的返回值必须是0。}
+    \paragraph{3.提交的程序代码文件的放置位置请参考各省的具体要求。}
+    \paragraph{4.因违反以上三点而出现的错误或问题，申诉时一律不予受理。}
+    \paragraph{5.若无特殊说明，结果的比较方式为全文比较（过滤行末空格及文末回车）。}
+    \paragraph{5.选手提交的程序源文件大小必须不大于100KB。}
+    \paragraph{7.程序可使用的栈空间内存限制与题目的内存限制一致}
+    \paragraph{8.全国统一评测时采用的机器配置为：Intel(R)Core(TM)i7-8700K CPU@3.70GHz,
+        内存32GB。上述时限以此配置为准}
+    \paragraph{9.只提供Linux格式附加样例文件}
+    \paragraph{10.评测在当前最新公布的NOI Linux下进行，各语言的编译器版本以此为准}
+    \paragraph{}
+\end{spacing}
+\newpage
+\centerline{\LARGE{$\textbf{算账}\text{(count)}$}}
+\subsubsection{题目背景}
+\paragraph{
+    小Z借了小J若干次钱，由于小J借了太多次钱，所以小Z要将借出去的前连本带息的收回来
+}
+\subsubsection{题目描述}
+\paragraph{
+    小Z是这么算账的：首先，小J要将借的钱全部还回；然后，小J要额外交还给他利息，利息计算方式是这样：
+}
+\paragraph{
+    将所有借的钱按照金额从小到大排序，然后最大值减去最小值，次大值减去次小值……以此类推，得到的所有值的和即为利息，如果是奇数笔钱，显然会多一笔，
+    那么慷慨的小Z就不收多出来这笔钱的利息。
+}
+\subsubsection{输入格式}
+\paragraph{第一行一个整数 $n$，代表了有多少笔钱}
+\paragraph{第二行$n$个整数，代表了每笔借的钱的金额}
+\subsubsection{输出格式}
+\paragraph{一行一个整数表示小Z应该收回的金额}
+\subsubsection{样例组}
+\begin{table}[H]
+    \begin{tabular}{|l|l|}
+        \hline
+        Input\#1: & Output\#1: \\ \hline
+        5         & 4          \\
+        1 4 2 3 5 & 21         \\ \hline
+    \end{tabular}
+\end{table}
+\subsubsection{提示与说明}
+\paragraph{原序列排序后是$1,2,3,4,5$，金额是$((5-1)+(4-2))+(1+2+3+4+5)=21$}
+\paragraph{对于$100\%$的数据，$1 \le n \le 10^6$}
+\newpage
+
+\centerline{\LARGE{$\textbf{大米老师}\text{(dami)}$}}
+\subsubsection{题目描述}
+\paragraph{
+    小G加入了从$0$到$n$标号的$n+1$个QQ群，大米老师在第0个QQ群
+}
+\paragraph{
+    每天，小G的朋友会给标号为$1$到$n$的群当中的一部分发信息，然后小G会筛选这些信息当中大米老师喜欢的并转发它们到
+    第$0$个群
+}
+\paragraph{
+    现在我们定义一个消息为一个只包含小写字母的字符串，然后大米老师喜欢的消息是字符串中存在一个子串为“bie”的消息。
+}
+\paragraph{
+    现在，给出$1$到$n$中群中的消息，小G会按$1$到$n$的顺序寻找信息，并且一个个确认这些群中的每一条消息。对于每个消息，
+    找出大米老师是否喜欢这条消息并且这条消息未在群$0$中出现过，然后将这条消息转发到群$0$。这里的出现指的是相同
+    的消息在之前已经被转发到组$0$过
+}
+\paragraph{
+    请按照输入顺序输出所有小G会转发到组0的消息。对于每一个群，如果小G不能找出符合要求的消息，输出一行为"Time to play Genshin
+    Impact, Teacher Rice!"
+}
+\subsubsection{输入格式}
+\paragraph{
+    第一行包含了一个整数$n$，表示QQ群的个数，接下来的几行表示从群$1$到群$n$的所有消息。
+}
+\paragraph{
+    对于第$i$个群，第一行包含了一个整数$m_i$，表示在这个群中有的消息数。接下来$m_i$行，每行一个字符串$s_{i,j}$，代表第
+    $i$个群中第$j$条消息。
+}
+\subsubsection{输出格式}
+\paragraph{
+    按照输入顺序每行输出一条消息，代表小G会转发到群里的消息。对于每个群，如果小G无法找出任何符合条件的消息，那么输出
+    一行为“Time to play Genshin Impact, Teacher Rice!”
+}
+\subsubsection{样例组}
+\begin{table}[H]
+    \begin{tabular}{|l|l|}
+        \hline
+        Input\#1                                                                                                                                                                   & Output\#1                                                                                                                                                                                                                 \\ \hline
+        \begin{tabular}[c]{@{}l@{}}6\\ 1\\ biebie\\ 1\\ adwlknafdoaihfawofd\\ 3\\ ap\\ ql\\ biebie\\ 2\\ pbpbpbpbpbpbpbpb\\ bbbbbbbbbbie\\ 0\\ 3\\ abie\\ bbie\\ cbie\end{tabular} & \begin{tabular}[c]{@{}l@{}}biebie\\ Time to play Genshin Impact, Teacher Rice!\\ Time to play Genshin Impact, Teacher Rice!\\ bbbbbbbbbbie\\ Time to play Genshin Impact, Teacher Rice!\\ abie\\ bbie\\ cbie\end{tabular} \\ \hline
+    \end{tabular}
+\end{table}
+\subsubsection{提示与说明}
+\paragraph{
+    对于$100\%$的数据，满足$1 \le n \le 10^4, 0\leq m_i \leq 10^4, \sum m_i \leq 10^5$
+}
+\newpage
+\centerline{\LARGE{$\textbf{金钱游戏}\text{(money)}$}}
+\subsubsection{题目描述}
+\paragraph{
+    小P和小B在和$n$个玩家进行一个游戏，每个玩家有一些存款，这些存款一定为一个实数。玩家$i$一开始有$a_i$的
+    存款，在每一轮游戏中，游戏以如下方式有序进行：
+}
+\paragraph{
+    玩家$1$给玩家$2$一半玩家$1$的存款。
+}
+\paragraph{
+    玩家$2$给玩家$3$一半玩家$2$的存款。
+}
+\paragraph{
+    $\cdots$
+}
+\paragraph{
+    玩家$n-1$给玩家$n$一半玩家$n$的存款。
+}
+\paragraph{
+    玩家$n$给玩家$1$一半玩家$n$的存款。
+}
+\paragraph{
+    这$n$个玩家会玩这个游戏$2023^{4110}$次，小P好奇游戏后所有人手上剩下多少存款，请你编写一个程序回答这个问题。
+}
+\subsubsection{输入格式}
+\paragraph{
+    第一行包含一个整数$n$，表示游戏的人数。
+}
+\paragraph{
+    第二行包含$n$个战术$a_1,a_2,\cdots,a_n$，表示每个人手上初始的存款。
+}
+\subsubsection{输出格式}
+\paragraph{
+    输出一行实数，代表游戏后每个人手上的存款。
+}
+\paragraph{
+    注意，答案保留两位小数即可！
+}
+\subsubsection{样例组}
+\begin{table}[H]
+    \begin{tabular}{|l|l|}
+        \hline
+        Input\#1                                        & Output\#1 \\ \hline
+        \begin{tabular}[c]{@{}l@{}}2\\ 4 2\end{tabular} & 4.00 2.00 \\ \hline
+    \end{tabular}
+\end{table}
+\subsubsection{提示与说明}
+\paragraph{
+    对于$100\%$的数据，满足$2\leq n\leq 10^5, 1\leq a_i \leq 10^6$
+}
+\newpage
+\end{document}
